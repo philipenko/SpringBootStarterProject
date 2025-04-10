@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.postgresql.Driver;
 
 @RestController
 @CrossOrigin
@@ -38,7 +39,7 @@ public class DBController {
 		try {
 			Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/test?allowPublicKeyRetrieval=true",
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
 				"postgres", "pass");
 			sql = "SELECT distcode, name FROM district";
 			ps = con.prepareStatement(sql);
