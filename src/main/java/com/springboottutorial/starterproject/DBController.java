@@ -36,13 +36,15 @@ public class DBController {
 		ResultSet myRs;
 		JSONArray districtlist = new JSONArray();
 		try {
-			Class.forName("org.postgresql.Driver");
+			// Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/test?allowPublicKeyRetrieval=true",
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
 				"postgres", "pass");
 			sql = "SELECT distcode, name FROM district";
 			ps = con.prepareStatement(sql);
 			myRs = ps.executeQuery();
+			System.out.println(myRs.toString());
+
 			while (myRs.next()) {
 				JSONObject jsonobj = new JSONObject();
 				jsonobj.put("districtcode",
@@ -76,9 +78,9 @@ public class DBController {
 		 String districtcode = Discode;
 		JSONArray taluklist = new JSONArray();
 		try {
-			Class.forName("org.postgresql.Driver");
+			// Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/test?allowPublicKeyRetrieval=true",
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
 				"postgres", "pass");
 			sql = " select * from taluk where distcode=?";
 			ps = con.prepareStatement(sql);
