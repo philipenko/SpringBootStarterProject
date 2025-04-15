@@ -4,7 +4,7 @@ var vill;
 $(document).ready(function () {
 $.ajax({
 	type: "GET",
-	url: "http://localhost:8075/dist",
+	url: "http://localhost:8080/dist",
 	data: "json",
 	contentType: "application/json",
 	success: function (data) {
@@ -15,6 +15,7 @@ $.ajax({
 	},
 
 	error: function (data) {
+		console.log(data)
 		$('#districtlist').append('<option>District Unavailable</option>');
 	},
 });
@@ -39,7 +40,7 @@ $('#districtlist').change(function () {
 
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:8075/taluk?Discode=" + distid1,
+		url: "http://localhost:8080/taluk?Discode=" + distid1,
 		/*data: 1,*/
 		contentType: "application/json",
 		success: function (data) {
@@ -67,7 +68,7 @@ $('#taluklist').change(function () {
 	var data = inputVal.toString();
 	$.ajax({
 		type: "GET", //POST 
-		url: "http://localhost:8075/village?Discode=" + distid1 + "&" + "Talukcode=" + talukid,
+		url: "http://localhost:8080/village?Discode=" + distid1 + "&" + "Talukcode=" + talukid,
 		contentType: "application/json",
 		success: function (data) {
 			let obj = $.parseJSON(data);
