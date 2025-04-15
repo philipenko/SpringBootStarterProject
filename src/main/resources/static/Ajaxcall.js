@@ -10,7 +10,7 @@ $.ajax({
 	success: function (data) {
 		let obj = $.parseJSON(data);
 		$.each(obj, function (key, value) {
-			$('#districtlist').append('<option value="' + value.districtcode + '">' + value.districtcode + '--' + value.districtname + '</option>');
+			$('#districtlist').append('<option value="' + value.districtcode + '">' + value.districtcode + '   ' + value.districtname + '</option>');
 		});
 	},
 
@@ -46,7 +46,7 @@ $('#districtlist').change(function () {
 		success: function (data) {
 			let obj = $.parseJSON(data);
 			$.each(obj, function (key, value) {
-			$('#taluklist').append('<option value="' + value.talukcode + '">' + value.talukcode + '--' + value.talukname + '</option>');
+			$('#taluklist').append('<option value="' + value.talukcode + '">' + value.talukcode + '   ' + value.talukname + '</option>');
 			});
 		},
 		error: function (data) {
@@ -73,7 +73,7 @@ $('#taluklist').change(function () {
 		success: function (data) {
 			let obj = $.parseJSON(data);
 			$.each(obj, function (key, value) {
-			$('#villagelist').append('<option value="' + value.villagecode + '">' + value.villagecode + '--' + value.villagename + '</option>');
+			$('#villagelist').append('<option value="' + value.villagecode + '">' + value.villagecode + '   ' + value.villagename + '</option>');
 			});
 		},
 		error: function (data) {
