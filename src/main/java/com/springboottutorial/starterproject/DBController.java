@@ -128,7 +128,7 @@ public class DBController {
 		try {
 			Class.forName("org.postgresql.Driver");
 			con = DriverManager.getConnection(
-				"jdbc:postgresql://localhost:5432/test?allowPublicKeyRetrieval=true",
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
 				"postgres", "pass");
 			sql = "select * from village where distcode=? and talukcode=?";
 			ps = con.prepareStatement(sql);
