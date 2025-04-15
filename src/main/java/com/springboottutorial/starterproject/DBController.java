@@ -69,6 +69,29 @@ public class DBController {
 		return (districtlist.toString());
 	}
 
+	@PostMapping("/addDist")
+	@ResponseBody
+	@CrossOrigin
+	public String addDistrict(
+		@RequestParam String distname, 
+		@RequestParam String distcode) {
+		try {
+			Connection con = DriverManager.getConnection(
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
+				"postgres", "pass");
+			String sql = "INSERT INTO district (name, distcode) VALUES (?, ?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, distname);
+			ps.setString(2, distcode);
+			ps.executeUpdate();
+			return "District added successfully!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error adding district: " + e.getMessage();
+		}
+	}
+
+
 	@RequestMapping(value = "/taluk",
 					method = RequestMethod.GET)
 	@ResponseBody

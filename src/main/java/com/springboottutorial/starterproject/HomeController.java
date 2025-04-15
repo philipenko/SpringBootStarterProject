@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class HomeController {
 
-	@GetMapping("/dropdown")
+	@GetMapping("/")
 	public String dropdown()
 	{
 		return "dropdown";

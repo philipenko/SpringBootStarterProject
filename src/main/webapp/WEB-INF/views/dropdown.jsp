@@ -44,7 +44,7 @@ pageEncoding="ISO-8859-1"%>
 		<p class="font-medium">Enter new district</p>
 		<input type="text" id="distname" name="distname" placeholder="Enter district name" required>
 		<input type="text" id="distcode" name="distcode" placeholder="Enter district code" required>
-		<button id="submit" name="submit">store new district</button>
+		<button class="button border" id="submit" name="submit">store new district</button>
 	</div>
 </body>
 </html>
