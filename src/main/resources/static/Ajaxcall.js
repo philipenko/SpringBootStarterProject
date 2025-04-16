@@ -1,3 +1,5 @@
+import { replaceDistInList } from "./util/dropdownmenus.js";
+
 var dis;
 var tal;
 var vill;
@@ -11,7 +13,9 @@ $(document).ready(function () {
 			let obj = $.parseJSON(data);
 			$.each(obj, function (key, value) {
 				$('#districtlist').append('<option value="' + value.districtcode + '">' + value.districtcode + '   ' + value.districtname + '</option>');
+				$('#updt-districtlist').append('<option value="' + value.districtcode + '">' + value.districtcode + '</option>');
 			});
+
 		},
 
 		error: function (data) {
@@ -104,6 +108,37 @@ $(document).ready(function () {
 				
 				$('#districtlist').append('<option value="' + distcode + '">' + distcode + '   ' + distname + '</option>');
 
+            },
+            error: function (error) {
+                console.error(error);
+                alert("Error adding district. Please try again.");
+            }
+        });
+    });
+	$('#update').click(function (e) {
+        e.preventDefault();
+
+        let distname = $('#newdistname').val();
+        let distcode = $('#updt-districtlist').val();
+		console.log(distname);
+		console.log(distcode);
+
+        if (!distname || !distcode) {
+            alert("Please provide both district name and district code.");
+            return;
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "http://localhost:8080/updateDist",
+            data: { distname: distname, distcode: distcode },
+            success: function (response) {
+                alert(response); 
+                $('#distname').val('');
+                $('#distcode').val('');
+
+				let oldDistList = $('#districtlist');
+				replaceDistInList({ code: distcode, name: distname }, oldDistList);
             },
             error: function (error) {
                 console.error(error);

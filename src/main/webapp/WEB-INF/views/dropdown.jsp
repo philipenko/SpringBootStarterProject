@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="Ajaxcall.js"></script> 
+<script type="module" src="Ajaxcall.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <!DOCTYPE html>
 <html>
@@ -10,9 +10,9 @@ pageEncoding="ISO-8859-1"%>
 	<title>spring stuff</title>
 </head>
 <body>
+	<h1 class="w-1/2 m-auto text-center text-xl">District, Taluk and Village</h1>
+	<br>
 	<div class="table-wrapper flex place-content-center">
-		<h3>District, Taluk and Village</h3>
-
 		<table class="table table-auto ">
 			<tr>
 				<td class="font-semi-bold">District: </td>
@@ -41,14 +41,30 @@ pageEncoding="ISO-8859-1"%>
 			</tr>
 		</table>
 	</div>
-	<div class="input-wrappe">
-		<h3>Create New District</h3>
+	<div class="input-wrapper">
+		<h1 class="text-xl">Create New District</h1>
 		<p class="font-medium">Enter new district</p>
 		<input type="text" id="distname" name="distname" placeholder="Enter district name" required>
 		<input type="text" id="distcode" name="distcode" placeholder="Enter district code" required>
 		<button class="button border" id="submit" name="submit">store new district</button>
 	</div>
-	
+	<br>
+	<div class="update-wrapper">
+		<h1 class="text-xl">Update District</h1>
+		<p class="font-medium">Enter new district <bold>name</bold></p>
+		<input type="text" id="newdistname" name="newdistname" placeholder="Enter new district name" required>
+		<table class="table table-auto ">
+			<tr>
+				<td class="font-semi-bold">District Code: </td>
+				<td>
+					<select id="updt-districtlist" name="updt-districtlist" required>
+						<option disabled selected>Select District</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<button class="button border" id="update" name="update">update district name</button>
+	</div>
 
 </body>
 </html>
