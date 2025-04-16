@@ -14,6 +14,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -189,6 +190,28 @@ public class DBController {
 							+ e);
 		}
 		return (villagelist.toString());
+	}
+
+	@PutMapping("/updateDist")
+	@ResponseBody
+	@CrossOrigin
+	public String updateDistrict(
+		@RequestParam String distname,
+		@RequestParam String distcode) {
+		try {
+			Connection con = DriverManager.getConnection(
+				"jdbc:postgresql://localhost:5432/postgres?allowPublicKeyRetrieval=true",
+				"postgres", "pass");
+			String sql = "UPDATE district SET name = ? WHERE distcode = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, distname);
+			ps.setString(2, distcode);
+			ps.executeUpdate();
+			return "District updated successfully!";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error updating district: " + e.getMessage();
+		}
 	}
 
 	private static void close(Connection myConn,
