@@ -11,6 +11,7 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 	<div class="table-wrapper flex place-content-center">
+		<h3>District, Taluk and Village</h3>
 
 		<table class="table table-auto ">
 			<tr>
@@ -41,10 +42,13 @@ pageEncoding="ISO-8859-1"%>
 		</table>
 	</div>
 	<div class="input-wrappe">
+		<h3>Create New District</h3>
 		<p class="font-medium">Enter new district</p>
 		<input type="text" id="distname" name="distname" placeholder="Enter district name" required>
 		<input type="text" id="distcode" name="distcode" placeholder="Enter district code" required>
 		<button class="button border" id="submit" name="submit">store new district</button>
 	</div>
+	
+
 </body>
 </html>

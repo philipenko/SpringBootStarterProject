@@ -67,7 +67,7 @@ $(document).ready(function () {
 		var inputVal = JSON.stringify(inputValObj);
 		var data = inputVal.toString();
 		$.ajax({
-			type: "GET", //POST 
+			type: "GET",  
 			url: "http://localhost:8080/village?Discode=" + distid1 + "&" + "Talukcode=" + talukid,
 			contentType: "application/json",
 			success: function (data) {
